@@ -32,25 +32,6 @@ if st.button('Predict'):
     st.write(f"### 💰 Predicted Sales Revenue: **${predicted_sales:,.2f}**")
     #'The predicted sales value is {formatted_prediction}')
 
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-# Example data
-ad_channels = ['TV', 'Radio', 'Newspaper']
-budgets = [tv_value, radio_value, newspaper_value]  # Replace with actual inputs
-predicted_sales = prediction[0]
-
-# Create a barplot
-try:
-plt.figure(figsize=(8, 5))
-sns.barplot(x=ad_channels, y=budgets, palette='Blues_d')
-plt.title('Advertising Budget Allocation')
-plt.xlabel('Advertising Channel')
-plt.ylabel('Budget ($1000s)')
-st.pyplot()
-except Exception as e:
-    st.write(f"An error occurred: {e}")
-
 
 st.write('**Insights:**' )
 st.write('- TV has the strongest correlation with sales. ') 
