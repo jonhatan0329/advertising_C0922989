@@ -2,7 +2,7 @@ import streamlit as st
 import pickle 
 import pandas as pd
 
-st.title('Advertising Sales Predictior')
+st.title('Advertising Sales Predictor')
 #st displays all we want
 st.write('This web app predicts the revenue an advertising campaign will generate based on TV, Radio, and Newspaper budgets. Adjust your strategy to maximize your ROI!.')
 
@@ -11,7 +11,7 @@ with open('model_lr_ad_c0922989.pkl', 'rb') as file:
     model_cp = pickle.load(file)
 
 #get the input from the users
-st.write('Enter your advertising budget (in $1000s)')
+st.write('Enter your advertising budget (in $1,000s)')
 tv_value=st.number_input('**TV Advertising Budget:**')
 radio_value=st.number_input('**Radio Advertising Budget:**')
 newspaper_value=st.number_input('**Newspaper Advertising Budget:**')
