@@ -12,7 +12,7 @@ with open('model_lr_ad_c0922989.pkl', 'rb') as file:
 
 #get the input from the users
 tv_value=st.number_input('**TV**')
-radio_value=st.number_input('**TV**')
+radio_value=st.number_input('**Radio**')
 newspaper_value=st.number_input('**Newspaper**')
 
 
