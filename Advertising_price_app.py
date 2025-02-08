@@ -2,18 +2,19 @@ import streamlit as st
 import pickle 
 import pandas as pd
 
-st.title('Advertising Sales Prediction')
+st.title('Advertising Sales Predictior')
 #st displays all we want
-st.write('This web app predicts **Sales Revenue** generated after the deployment of an advertising campaing.')
+st.write('This web app predicts the revenue an advertising campaign will generate based on TV, Radio, and Newspaper budgets. Adjust your strategy to maximize your ROI!.')
 
 #to read the model from the pickle file
 with open('model_lr_ad_c0922989.pkl', 'rb') as file:
     model_cp = pickle.load(file)
 
 #get the input from the users
-tv_value=st.number_input('**TV**')
-radio_value=st.number_input('**Radio**')
-newspaper_value=st.number_input('**Newspaper**')
+st.write('Enter your advertising budget (in $1000s)')
+tv_value=st.number_input('**TV Advertising Budget:**')
+radio_value=st.number_input('**Radio Advertising Budget:**')
+newspaper_value=st.number_input('**Newspaper Advertising Budget:**')
 
 
 #with this code we can request the input but we need to convert those inputs into dataframes
@@ -29,3 +30,19 @@ prediction=model_cp.predict(ad_data)
 if st.button('Predict'):
     formatted_prediction = f"${prediction[0]:,.2f}"
     st.write(f'The predicted sales value is {formatted_prediction}')
+
+    import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Example data
+ad_channels = ['TV', 'Radio', 'Newspaper']
+budgets = [tv_value, radio_value, newspaper_value]  # Replace with actual inputs
+predicted_sales = prediction[0]
+
+# Create a barplot
+plt.figure(figsize=(8, 5))
+sns.barplot(x=ad_channels, y=budgets, palette='Blues_d')
+plt.title('Advertising Budget Allocation')
+plt.xlabel('Advertising Channel')
+plt.ylabel('Budget ($1000s)')
+st.pyplot()
