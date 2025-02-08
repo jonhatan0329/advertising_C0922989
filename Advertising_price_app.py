@@ -28,9 +28,8 @@ prediction=model_cp.predict(ad_data)
 
 #display the result
 if st.button('Predict'):
-    #formatted_prediction = f"${prediction[0]:,.2f}"
-    st.write(f"### 💰 Predicted Sales Revenue: **${predicted_sales:,.2f}**")
-    #'The predicted sales value is {formatted_prediction}')
+    formatted_prediction = f"${prediction[0]:,.2f}"
+    st.write(f'The predicted sales value is {formatted_prediction}')
 
 
 st.write('**Insights:**' )
