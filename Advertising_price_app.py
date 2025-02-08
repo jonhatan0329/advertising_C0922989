@@ -29,9 +29,10 @@ prediction=model_cp.predict(ad_data)
 #display the result
 if st.button('Predict'):
     formatted_prediction = f"${prediction[0]:,.2f}"
-    st.write(f'The predicted sales value is {formatted_prediction}')
+    st.write(f"### 💰 Predicted Sales Revenue: **${predicted_sales:,.2f}**")
+    #'The predicted sales value is {formatted_prediction}')
 
-    import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Example data
@@ -40,9 +41,18 @@ budgets = [tv_value, radio_value, newspaper_value]  # Replace with actual inputs
 predicted_sales = prediction[0]
 
 # Create a barplot
+try:
 plt.figure(figsize=(8, 5))
 sns.barplot(x=ad_channels, y=budgets, palette='Blues_d')
 plt.title('Advertising Budget Allocation')
 plt.xlabel('Advertising Channel')
 plt.ylabel('Budget ($1000s)')
 st.pyplot()
+except Exception as e:
+    st.write(f"An error occurred: {e}")
+
+
+st.write('**Insights:**' )
+st.write('- TV has the strongest correlation with sales. ') 
+st.write('- Radio is cost-effective with a notable impact.')  
+st.write('- Newspaper ads have minimal influence on sales.')
